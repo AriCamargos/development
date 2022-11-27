@@ -1,23 +1,28 @@
+
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:rick_morty/routes/modular.dart';
+import 'package:get/get.dart';
+import 'package:rick_morty/views/http_page.dart';
 
 void main() {
-  runApp(
-    ModularApp(
-      module: AppModule(),
-      child: const HomePage(),
-    ),
-  );
+  runApp(const HomePage());
 }
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  @override
+  @override 
   Widget build(BuildContext context) {
-    return MaterialApp.router(
+    return GetMaterialApp(
+      getPages: const [
+        // GetPage(
+        //   name: '/details',
+        //   page: () => const ,
+        //   binding: DetailsPage(),
+        // ),
+      ],
+
       title: 'API Rick and Morty',
+      home: const HttpPage(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: const ColorScheme.light(
