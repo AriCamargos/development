@@ -9,6 +9,6 @@ class HttpBindings implements Bindings {
   @override
   void dependencies() {
     Get.put<ICharacterRepository>(CharacterHttpRepository());
-    Get.put(HttpController(httpRepository: Get.find<CharacterHttpRepository>()));
+    Get.put(HttpController());
   }
 }
