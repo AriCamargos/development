@@ -5,6 +5,7 @@ import 'package:rick_morty/views/http_page.dart';
 import 'controllers/http/http_bindings.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const HomePage());
 }
 
