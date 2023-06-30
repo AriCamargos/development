@@ -12,7 +12,7 @@ class CharacterRepository implements ICharacterRepository {
   }) : _characterDatasource = characterDatasource;
 
   @override
-  Future<CharacterEntity> getCharacter({
+  Future<List<CharacterEntity>> getCharacter({
     required int page,
   }) async {
     return await _characterDatasource.getCharacter(

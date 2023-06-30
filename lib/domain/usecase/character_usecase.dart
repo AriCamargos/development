@@ -11,7 +11,7 @@ class CharacterUsecase {
     required ICharacterRepository characterRepository,
   }) : _characterRepository = characterRepository;
 
-  Future<CharacterEntity> call({required int page}) async {
+  Future<List<CharacterEntity>> call({required int page}) async {
     return await _characterRepository.getCharacter(
       page: page,
     );
