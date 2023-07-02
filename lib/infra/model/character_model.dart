@@ -2,7 +2,7 @@ import 'package:rick_morty/domain/entity/character_entity.dart';
 import 'package:rick_morty/domain/entity/location_entity.dart';
 import 'package:rick_morty/infra/model/location_model.dart';
 
-import '../../domain/enum/enum_values_entity.dart';
+import '../../domain/enum/enum_values.dart';
 
 class CharacterModel extends CharacterEntity {
   const CharacterModel({
