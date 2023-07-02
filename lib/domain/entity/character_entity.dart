@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 
 import 'package:rick_morty/domain/entity/location_entity.dart';
 
-import 'enum_values_entity.dart';
+import '../enum/enum_values_entity.dart';
 
 class CharacterEntity extends Equatable {
   const CharacterEntity({
