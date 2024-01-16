@@ -1,9 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 
 import 'package:rick_morty/domain/entity/location_entity.dart';
 
-import '../enum/enum_values_entity.dart';
+import '../enum/enum_values.dart';
+import 'origin_entity.dart';
 
 class CharacterEntity extends Equatable {
   const CharacterEntity({
@@ -23,16 +26,16 @@ class CharacterEntity extends Equatable {
 
   final int id;
   final String name;
-  final Status status;
-  final Species species;
+  final StatusEnum status;
+  final SpeciesEnum species;
   final String type;
-  final Gender gender;
-  final LocationEntity origin;
+  final GenderEnum gender;
+  final OriginEntity origin;
   final LocationEntity location;
   final String image;
   final List<String> episode;
   final String url;
-  final DateTime created;
+  final String created;
 
   @override
   List<Object> get props {
@@ -51,4 +54,43 @@ class CharacterEntity extends Equatable {
       created,
     ];
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'status': status.name,
+      'species': species.name,
+      'type': type,
+      'gender': gender.name,
+      'origin': origin.toMap(),
+      'location': location.toMap(),
+      'image': image,
+      'episode': episode,
+      'url': url,
+      'created': created,
+    };
+  }
+
+  String toJson() => jsonDecode(toMap() as String);
+
+  factory CharacterEntity.fromMap(Map<String, dynamic> map) {
+    return CharacterEntity(
+      id: map['id'],
+      name: map['name'],
+      status: map['status'],
+      species: map['species'],
+      type: map['type'],
+      gender: map['gender'],
+      origin: OriginEntity.fromMap(map['origin']),
+      location: LocationEntity.fromMap(map['location']),
+      image: map['image'],
+      episode: map['episode'],
+      url: map['url'],
+      created: map['created'],
+    );
+  }
+
+  factory CharacterEntity.fromJson(String json) =>
+      CharacterEntity.fromMap(jsonDecode(json));
 }

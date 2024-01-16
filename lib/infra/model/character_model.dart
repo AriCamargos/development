@@ -1,5 +1,6 @@
 import 'package:rick_morty/domain/entity/character_entity.dart';
 import 'package:rick_morty/domain/entity/location_entity.dart';
+import 'package:rick_morty/domain/entity/origin_entity.dart';
 import 'package:rick_morty/infra/model/location_model.dart';
 
 import '../../domain/enum/enum_values.dart';
@@ -8,16 +9,16 @@ class CharacterModel extends CharacterEntity {
   const CharacterModel({
     required int id,
     required String name,
-    required Status status,
-    required Species species,
+    required StatusEnum status,
+    required SpeciesEnum species,
     required String type,
-    required Gender gender,
-    required LocationEntity origin,
+    required GenderEnum gender,
+    required OriginEntity origin,
     required LocationEntity location,
     required String image,
     required List<String> episode,
     required String url,
-    required DateTime created,
+    required String created,
   }) : super(
           id: id,
           name: name,
@@ -33,7 +34,7 @@ class CharacterModel extends CharacterEntity {
           species: species,
         );
 
-  factory CharacterModel.fromJson(Map<String, dynamic> json) {
+  /*factory CharacterModel.fromJson(Map<String, dynamic> json) {
     return CharacterModel(
       id: json["id"],
       name: json["name"],
@@ -48,5 +49,5 @@ class CharacterModel extends CharacterEntity {
       url: json["url"],
       created: DateTime.parse(json["created"]),
     );
-  }
+  }*/
 }
