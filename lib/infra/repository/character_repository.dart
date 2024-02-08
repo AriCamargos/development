@@ -14,9 +14,15 @@ class CharacterRepository implements ICharacterRepository {
   @override
   Future<List<CharacterEntity>> getCharacter({
     required int page,
+    required int count,
+    required String next,
+    required String prev,
   }) async {
     return await _characterDatasource.getCharacter(
       page: page,
+      count: count,
+      next: next,
+      prev: prev,
     );
   }
 }

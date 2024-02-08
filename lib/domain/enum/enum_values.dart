@@ -10,36 +10,36 @@ class EnumValues<T> {
   }
 }
 
-enum Status {
+enum StatusEnum {
   alive,
   unknown,
   dead,
 }
 
 final statusValues = EnumValues({
-  "Alive": Status.alive,
-  "Dead": Status.dead,
-  "Unknown": Status.unknown,
+  "Alive": StatusEnum.alive,
+  "Dead": StatusEnum.dead,
+  "Unknown": StatusEnum.unknown,
 });
 
-enum Species {
+enum SpeciesEnum {
   human,
   alien,
 }
 
 final speciesValues = EnumValues({
-  "Alien": Species.alien,
-  "Human": Species.human,
+  "Alien": SpeciesEnum.alien,
+  "Human": SpeciesEnum.human,
 });
 
-enum Gender {
+enum GenderEnum {
   male,
   female,
   unknown,
 }
 
 final genderValues = EnumValues({
-  "Female": Gender.female,
-  "Male": Gender.male,
-  "unknown": Gender.unknown,
+  "Female": GenderEnum.female,
+  "Male": GenderEnum.male,
+  "unknown": GenderEnum.unknown,
 });

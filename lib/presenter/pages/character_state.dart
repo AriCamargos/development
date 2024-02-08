@@ -11,8 +11,16 @@ class CharacterState extends ChangeNotifier {
   }) : _getCharacterDatasource = getCharacterDatasource;
 
   Future<List<CharacterEntity>> getData(
-    int page,
+     int page,
+     int count,
+     String next,
+     String prev,
   ) async {
-    return await _getCharacterDatasource.getCharacter(page: page);
+    return await _getCharacterDatasource.getCharacter(
+      page: page,
+      count: count,
+      next: next,
+      prev: prev,
+    );
   }
 }
