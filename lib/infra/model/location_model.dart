@@ -1,6 +1,6 @@
 import 'package:rick_morty/domain/entity/location_entity.dart';
 
-class LocationModel extends LocationEntity {
+/*class LocationModel extends LocationEntity {
   const LocationModel({
     required String name,
     required String url,
@@ -15,4 +15,4 @@ class LocationModel extends LocationEntity {
       url: json['url'],
     );
   }
-}
+}*/

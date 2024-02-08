@@ -36,7 +36,7 @@ class _CharacterPageState extends State<CharacterPage> {
         title: const Text('Api Rick e Morty'),
       ),
       body: FutureBuilder<List>(
-        future: getCharacter(),
+       // future: getCharacter(),
         // futureCharacter,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
