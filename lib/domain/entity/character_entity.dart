@@ -1,6 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
 
 import 'package:rick_morty/domain/entity/location_entity.dart';
@@ -54,43 +51,4 @@ class CharacterEntity extends Equatable {
       created,
     ];
   }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'name': name,
-      'status': status.name,
-      'species': species.name,
-      'type': type,
-      'gender': gender.name,
-      'origin': origin.toMap(),
-      'location': location.toMap(),
-      'image': image,
-      'episode': episode,
-      'url': url,
-      'created': created,
-    };
-  }
-
-  String toJson() => jsonDecode(toMap() as String);
-
-  factory CharacterEntity.fromMap(Map<String, dynamic> map) {
-    return CharacterEntity(
-      id: map['id'],
-      name: map['name'],
-      status: map['status'],
-      species: map['species'],
-      type: map['type'],
-      gender: map['gender'],
-      origin: OriginEntity.fromMap(map['origin']),
-      location: LocationEntity.fromMap(map['location']),
-      image: map['image'],
-      episode: map['episode'],
-      url: map['url'],
-      created: map['created'],
-    );
-  }
-
-  factory CharacterEntity.fromJson(String json) =>
-      CharacterEntity.fromMap(jsonDecode(json));
 }

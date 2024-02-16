@@ -1,9 +1,8 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
 
 class LocationEntity extends Equatable {
   const LocationEntity({
+    required this.id,
     required this.name,
     required this.url,
     required this.type,
@@ -12,6 +11,7 @@ class LocationEntity extends Equatable {
     required this.created,
   });
 
+  final int id;
   final String name;
   final String url;
   final String type;
@@ -22,6 +22,7 @@ class LocationEntity extends Equatable {
   @override
   List<Object> get props {
     return [
+      id,
       name,
       url,
       type,
@@ -30,31 +31,4 @@ class LocationEntity extends Equatable {
       created,
     ];
   }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'name': name,
-      'url': url,
-      'type': type,
-      'dimension': dimension,
-      'residents': residents,
-      'created': created,
-    };
-  }
-
-  String toJson() => jsonDecode(toMap() as String);
-
-  factory LocationEntity.fromMap(Map<String, dynamic> map) {
-    return LocationEntity(
-      name: map['name'] ?? '',
-      url: map['url'] ?? '',
-      created: map['created'] ?? '',
-      dimension: map['dimension'] ?? '',
-      residents: List.from(map['residents']),
-      type: map['type'],
-    );
-  }
-
-  factory LocationEntity.fromJson(String json) =>
-      LocationEntity.fromMap(jsonDecode(json));
 }

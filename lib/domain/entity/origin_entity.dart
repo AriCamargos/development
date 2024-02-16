@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
@@ -16,22 +15,4 @@ class OriginEntity extends Equatable {
         url,
       ];
 
-  Map<String, dynamic> toMap() {
-    return {
-      'name': name,
-      'url': url,
-    };
-  }
-
-  String toJson() => jsonDecode(toMap() as String);
-
-  factory OriginEntity.fromMap(Map<String, dynamic> map) {
-    return OriginEntity(
-      name: map['name'],
-      url: map['url'],
-    );
-  }
-
-  factory OriginEntity.fromJson(String json) =>
-      OriginEntity.fromMap(jsonDecode(json));
 }
