@@ -12,10 +12,10 @@ class CharacterUsecase {
   }) : _characterRepository = characterRepository;
 
   Future<List<CharacterEntity>> call({
+    String? prev,
+    String? next,
     required int page,
-    required count,
-    required next,
-    required prev,
+    required int count,
   }) async {
     return await _characterRepository.getCharacter(
       page: page,
