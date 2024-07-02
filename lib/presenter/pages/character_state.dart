@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:rick_morty/domain/entity/character_entity.dart';
+import 'package:rick_morty/external/datasources/character_datasource.dart';
 
-import '../../infra/datasource/character_datasource.dart';
 
 class CharacterState extends ChangeNotifier {
-  final ICharacterDatasource _getCharacterDatasource;
-  final CharacterEntity characterEntity;
+  final CharacterDatasource getCharacterDatasource;
 
   CharacterState(
-    this.characterEntity, {
-    required ICharacterDatasource getCharacterDatasource,
-  }) : _getCharacterDatasource = getCharacterDatasource;
+     {
+    required this.getCharacterDatasource,
+  });
 
   final _characters = <CharacterEntity?>[];
   List<CharacterEntity?> get character => _characters;
@@ -34,7 +33,7 @@ class CharacterState extends ChangeNotifier {
     notifyListeners();
 
     try {
-      final newCharacters = await _getCharacterDatasource.getCharacter(
+      final newCharacters = await getCharacterDatasource.getCharacter(
         page: page,
         count: count,
         next: _nextPageUrl,
