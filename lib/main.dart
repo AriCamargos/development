@@ -1,35 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:rick_morty/views/http_page.dart';
-
-import 'controllers/http/http_bindings.dart';
+import 'package:provider/provider.dart';
+import 'package:rick_morty/external/datasources/character_datasource.dart';
+import 'package:rick_morty/presenter/pages/character_page.dart';
+import 'package:rick_morty/presenter/pages/character_state.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const HomePage());
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context){
-    return GetMaterialApp(
-      getPages: [
-        GetPage(
-          name: '/',
-          page: () => const HttpPage(),
-          binding: HttpBindings(),
+  final datasource = CharacterDatasource();
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => CharacterState(getCharacterDatasource: datasource),
+      child: MaterialApp(
+        title: 'API Rick and Morty',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: const ColorScheme.light(
+            primary: Colors.teal,
+            secondary: Colors.greenAccent,
+          ),
         ),
-      ],
-      title: 'API Rick and Morty',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: const ColorScheme.light(
-          primary: Colors.teal,
-          secondary: Colors.greenAccent,
-        ),
+        home: const CharacterPage(),
       ),
-    );
-  }
+    ),
+  );
 }
