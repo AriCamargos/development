@@ -10,12 +10,4 @@ class InfoMapper {
     );
   }
 
-  static Map<String, dynamic> toMap(InfoEntity info) {
-    return {
-      'count': info.count,
-      'pages': info.pages,
-      'next': info.next,
-      'prev': info.prev,
-    };
-  }
 }

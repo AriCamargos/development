@@ -11,16 +11,16 @@ class LocationEntity extends Equatable {
     required this.created,
   });
 
-  final int id;
+  final int? id;
   final String name;
   final String url;
-  final String type;
-  final String dimension;
-  final List<String> residents;
-  final String created;
+  final String? type;
+  final String? dimension;
+  final List<String>? residents;
+  final String? created;
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       id,
       name,
