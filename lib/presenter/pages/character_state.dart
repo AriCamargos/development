@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:rick_morty/domain/entity/character_entity.dart';
 import 'package:rick_morty/external/datasources/character_datasource.dart';
 
-
 class CharacterState extends ChangeNotifier {
   final CharacterDatasource getCharacterDatasource;
 
-  CharacterState(
-     {
+  CharacterState({
     required this.getCharacterDatasource,
   });
 
-  final _characters = <CharacterEntity?>[];
-  List<CharacterEntity?> get character => _characters;
+  final _characters = <Character?>[];
+  List<Character?> get character => _characters;
 
   bool _isLoading = false;
   bool get isLoading => _isLoading;

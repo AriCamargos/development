@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rick_morty/presenter/pages/character_state.dart';
+import 'package:rick_morty/presenter/pages/widgets/character_widget.dart';
 
 class CharacterPage extends StatefulWidget {
   const CharacterPage({
@@ -67,16 +68,9 @@ class _CharacterPageState extends State<CharacterPage> {
               itemCount: state.character.length,
               itemBuilder: (context, index) {
                 var character = state.character[index];
-                return Card(
-                  elevation: 5,
-                  margin: const EdgeInsets.only(top: 5, left: 5, right: 5),
-                  child: ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: NetworkImage(character!.image),
-                      backgroundColor: Colors.black,
-                    ),
-                    title: Text(character.name),
-                  ),
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CharacterWidget(character: character),
                 );
               },
             ),
