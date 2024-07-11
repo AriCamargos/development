@@ -1,21 +1,19 @@
-import 'package:faker/faker.dart';
-import 'package:rick_morty/domain/entity/character_entity.dart';
-import 'package:rick_morty/domain/entity/location_entity.dart';
-import 'package:rick_morty/domain/entity/origin_entity.dart';
 
-import '../../domain/enum/enum_values.dart';
+
+import 'package:rick_morty/domain/entity/character_entity.dart';
+
 import 'location_mapper.dart';
 import 'origin_mapper.dart';
 
 class CharacterMapper {
-  static CharacterEntity fromMap(Map<String, dynamic> json) {
-    return CharacterEntity(
+  static Character fromMap(Map<String, dynamic> json) {
+    return Character(
       id: json['id'],
       name: json['name'],
-      status: statusValues.map[json['status']]!,
-      species: speciesValues.map[json['species']]!,
+      status: json['status'],
+      species: json['species'],
       type: json['type'],
-      gender: genderValues.map[json['gender']]!,
+      gender: json['gender'],
       origin: OriginMapper.fromMap(json['origin']),
       location: LocationMapper.fromMap(json['location']),
       image: json['image'],

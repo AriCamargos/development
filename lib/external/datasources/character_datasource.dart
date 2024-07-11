@@ -11,7 +11,7 @@ class CharacterDatasource extends ICharacterDatasource {
   final String baseUrl = "https://rickandmortyapi.com/api/";
 
   @override
-  Future<List<CharacterEntity>> getCharacter({
+  Future<List<Character>> getCharacter({
     String? prev,
     String? next,
     required int page,
@@ -25,7 +25,7 @@ class CharacterDatasource extends ICharacterDatasource {
         final jsonResult = json.decode(response.body);
         final charactersList = jsonResult['results'] as List<dynamic>;
 
-        List<CharacterEntity> characters = charactersList
+        List<Character> characters = charactersList
             .map((characterJson) => CharacterMapper.fromMap(characterJson))
             .toList();
 

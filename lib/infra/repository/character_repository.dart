@@ -11,7 +11,7 @@ class CharacterRepository implements ICharacterRepository {
   }) : _characterDatasource = characterDatasource;
 
   @override
-  Future<List<CharacterEntity>> getCharacter({
+  Future<List<Character>> getCharacter({
     String? prev,
     String? next,
     required int page,

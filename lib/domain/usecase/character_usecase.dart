@@ -11,7 +11,7 @@ class CharacterUsecase {
     required ICharacterRepository characterRepository,
   }) : _characterRepository = characterRepository;
 
-  Future<List<CharacterEntity>> call({
+  Future<List<Character>> call({
     String? prev,
     String? next,
     required int page,

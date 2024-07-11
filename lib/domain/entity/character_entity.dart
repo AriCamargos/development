@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 import 'package:rick_morty/domain/entity/location_entity.dart';
 
-import '../enum/enum_values.dart';
 import 'origin_entity.dart';
 
-class CharacterEntity extends Equatable {
-  const CharacterEntity({
+class Character extends Equatable {
+  const Character({
     required this.id,
     required this.name,
     required this.status,
@@ -23,10 +23,10 @@ class CharacterEntity extends Equatable {
 
   final int id;
   final String name;
-  final StatusEnum status;
-  final SpeciesEnum species;
+  final String status;
+  final String species;
   final String type;
-  final GenderEnum gender;
+  final String gender;
   final OriginEntity origin;
   final LocationEntity location;
   final String image;
@@ -50,5 +50,18 @@ class CharacterEntity extends Equatable {
       url,
       created,
     ];
+  }
+
+  Color? getColorStatus(String status) {
+    if (status == 'Alive') {
+      return Colors.green;
+    }
+    if (status == 'Dead') {
+      return Colors.black;
+    }
+    if (status == 'unknown') {
+      return Colors.purple;
+    }
+    return null;
   }
 }
