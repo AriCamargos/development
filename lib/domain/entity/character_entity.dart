@@ -52,15 +52,18 @@ class Character extends Equatable {
     ];
   }
 
-  Color? getColorStatus(String status) {
-    if (status == 'Alive') {
+  Color? getColorStatus(String specie) {
+    if (specie == 'Human') {
       return Colors.green;
     }
-    if (status == 'Dead') {
+    if (specie == 'unknown') {
       return Colors.black;
     }
-    if (status == 'unknown') {
-      return Colors.purple;
+    if (specie == 'Alien') {
+      return Colors.purple[200];
+    }
+    if (specie == 'Humanoid') {
+      return Colors.cyan;
     }
     return null;
   }

@@ -25,6 +25,12 @@ class CharacterState extends ChangeNotifier {
   String? get error => _error;
 
   String? _nextPageUrl;
+  bool isFavorite = false;
+
+  void favorite(){
+    isFavorite = false;
+  }
+
 
   Future<void> loadingCharacter({
     String? prev,

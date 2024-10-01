@@ -10,18 +10,6 @@ class EnumValues<T> {
   }
 }
 
-enum StatusEnum {
-  alive,
-  unknown,
-  dead,
-}
-
-final statusValues = EnumValues({
-  "Alive": StatusEnum.alive,
-  "Dead": StatusEnum.dead,
-  "Unknown": StatusEnum.unknown,
-});
-
 enum SpeciesEnum {
   human,
   alien,

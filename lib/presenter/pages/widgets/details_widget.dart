@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:rick_morty/domain/entity/character_entity.dart';
+import 'package:rick_morty/domain/entity/episode_entity.dart';
 import 'package:rick_morty/presenter/pages/widgets/text_row_data.dart';
 
 class DetailsWidget extends StatelessWidget {
   final Character details;
+  //final EpisodeEntity episode;
   const DetailsWidget({
     super.key,
     required this.details,
+    //required this.episode,
   });
 
   @override
@@ -14,23 +18,29 @@ class DetailsWidget extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amber,
-        title: const Text('Api Rick e Morty'),
+        title: Text(details.name),
       ),
       body: Container(
         color: const Color(0XFF272b33),
+        padding: const EdgeInsets.all(40.0),
         child: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(30.0),
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(
+              maxWidth: 600, // Define o limite máximo da largura da página
+            ),
             child: Card(
               color: const Color(0XFF3c3e44),
               child: Column(
                 children: [
                   ClipRRect(
                     borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
+                      topLeft: Radius.circular(15),
+                      topRight: Radius.circular(15),
                     ),
-                    child: Image.network(details.image),
+                    child: Image.network(
+                      details.image,
+                      width: double.infinity,
+                    ),
                   ),
                   const SizedBox(height: 10),
                   Text(
@@ -41,14 +51,36 @@ class DetailsWidget extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.circle,
+                        size: 8,
+                        color: details.getColorStatus(details.species),
+                      ),
+                      const SizedBox(width: 5),
+                      Text(
+                        details.species,
+                        style: TextStyle(
+                          color: details.getColorStatus(details.species),
+                        ),
+                      ),
+                    ],
+                  ),
                   const SizedBox(height: 10),
+                 /* TextRowData(
+                    title: 'Primeira vez visto',
+                    subtitle: episode.name,
+                  ),*/
                   TextRowData(
-                    title: 'Última vez visto',
+                    title: 'Localização: ',
                     subtitle: details.location.name,
                   ),
                   TextRowData(
-                    title: 'Última vez visto',
-                    subtitle: details.location.name,
+                    title: 'Quando foi criado: ',
+                    subtitle:
+                        DateFormat.yMEd().format(DateTime.parse(details.created)),
                   ),
                 ],
               ),
@@ -59,3 +91,4 @@ class DetailsWidget extends StatelessWidget {
     );
   }
 }
+// was were 

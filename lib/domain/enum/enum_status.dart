@@ -18,11 +18,12 @@ enum StatusEnum {
         .status;
   }
 
-  static getColor(Color color) {
+  static Color? getColor(Color color) {
     StatusEnum.values
         .firstWhere(
           (element) => color == color,
         )
         .color;
+    return color;
   }
 }

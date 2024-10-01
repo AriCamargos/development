@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rick_morty/presenter/pages/character_state.dart';
 import 'package:rick_morty/presenter/pages/widgets/character_widget.dart';
+import 'package:rick_morty/presenter/pages/widgets/favorites_page.dart';
 
 class CharacterPage extends StatefulWidget {
+  final CharacterState state;
+  final FavoritePage favoritePage;
+
   const CharacterPage({
     super.key,
+    required this.state,
+    required this.favoritePage,
   });
 
   @override
@@ -30,6 +36,14 @@ class _CharacterPageState extends State<CharacterPage> {
       appBar: AppBar(
         backgroundColor: Colors.amber,
         title: const Text('Api Rick e Morty'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.favorite),
+            onPressed: () {
+              Navigator.of(context).pushNamed('/favorite_page');
+            },
+          ),
+        ],
       ),
       body: Container(
         decoration: const BoxDecoration(color: Color(0XFF272b33)),
@@ -71,7 +85,9 @@ class _CharacterPageState extends State<CharacterPage> {
                 itemCount: state.character.length,
                 itemBuilder: (context, index) {
                   var character = state.character[index];
-                  var episode = (index < state.episode.length) ? state.episode[index] : null;
+                  var episode = (index < state.episode.length)
+                      ? state.episode[index]
+                      : null;
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: CharacterWidget(

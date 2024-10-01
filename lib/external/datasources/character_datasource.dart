@@ -20,8 +20,17 @@ class CharacterDatasource extends ICharacterDatasource {
     required int count,
   }) async {
     try {
-      final url = next ?? '$baseUrl/character?page=$page&count=$count';
-      final response = await http.get(Uri.parse(url));
+      final url = next ?? '$baseUrl/character';
+      final response = await http.get(
+        Uri.parse(url).replace(
+          queryParameters: {
+            'page': page.toString(),
+            'count': count.toString(),
+            if (prev != null) 'prev': prev,
+            if (next != null) 'next': next,
+          },
+        ),
+      );
 
       if (response.statusCode == 200) {
         final jsonResult = json.decode(response.body);
@@ -44,12 +53,20 @@ class CharacterDatasource extends ICharacterDatasource {
   Future<List<EpisodeEntity>> getEpisode({
     String? prev,
     String? next,
-    required int page,
-    required int count,
+    required num page,
+    required num count,
   }) async {
     try {
       final url = next ?? '$baseUrl/episode?page=$page';
-      final response = await http.get(Uri.parse(url));
+      final uri = Uri.parse(url).replace(
+        queryParameters: {
+          'page': page,
+          'count': count,
+          'prev': prev,
+          'next': next,
+        },
+      );
+      final response = await http.get(uri);
 
       if (response.statusCode == 200) {
         final jsonResult = json.decode(response.body);
@@ -64,8 +81,7 @@ class CharacterDatasource extends ICharacterDatasource {
         throw Exception('Erro ao carregar');
       }
     } catch (e) {
-            throw Exception('Erro ao carregar caracter $e');
-
+      throw Exception('Erro ao carregar caracter $e');
     }
   }
 }
